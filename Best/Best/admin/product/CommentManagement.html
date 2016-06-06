@@ -1,0 +1,75 @@
+﻿<script type="text/javascript">
+    $(function () {
+        var Comindex = 1;//当前页
+        var ComSize = 10;
+
+        $.ajax({
+            url: 'ajax.ashx?action=GetComment',
+            data:{"Comindex":Comindex,"ComSize":ComSize},
+            type:'post',
+           success: function (msg) {
+               console.log(msg);
+           }
+        });
+    });
+
+</script>
+
+
+<div class="bjui-pageHeader">
+    <!--<div class="bjui-searchBar">
+        <label>商品分类:</label>
+        <select name="type" id="Protype" data-toggle="selectpicker">
+            <option value="" selected>请选择</option>
+            <option value="1">棒球帽</option>
+            <option value="2">平板帽</option>
+            <option value="3">网帽</option>
+            <option value="4">针织帽</option>
+            <option value="5">五片帽</option>
+            <option value="6">边帽</option>
+        </select>&nbsp;
+
+        <label>商品编号：</label><input type="text" id="customNo" value="" name="code" class="form-control" size="10">&nbsp;
+        <label>商品名称：</label><input type="text" value="" id="customName" name="name" class="form-control" size="8">&nbsp;
+        <input type="checkbox" id="j_table_chk" value="false" data-toggle="icheck" data-label="首页推荐 ">
+        <input type="checkbox" id="j_table_Show" value="true" data-toggle="icheck" data-label="首页展示 ">
+  
+        <button type="submit" class="btn-default" data-icon="search" onclick="search()">查询</button>&nbsp;
+        <a class="btn btn-orange" href="javascript:;" data-toggle="reloadsearch" data-clear-query="true" data-icon="undo" onclick="Clear()">清空查询</a>
+        <div class="pull-right">
+
+        </div>
+    </div>-->
+
+</div>
+<div class="bjui-pageContent tableContent">
+    <table class="table table-bordered table-hover table-striped table-top" data-selected-multi="true" id="tab">
+        <thead>
+            <tr>
+                <th data-order-field="id">评论编号</th>
+                <th data-order-field="id">评论用户</th>
+                <th data-order-field="name">E-mail</th>
+                <th data-order-field="type">手机号码</th>
+                <th data-order-field="price">评论内容</th>
+                <th data-order-field="sex">是否已读取</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+</div>
+<div class="bjui-pageFooter">
+    <div class="pages">
+        <span>每页&nbsp;</span>
+        <div class="selectPagesize" id="sl">
+            <select data-toggle="selectpicker" id="sel">
+                <option value="10" id="three">10</option>
+                <option value="20" id="six">20</option>
+                <option value="30">30</option>
+
+            </select>
+        </div>
+        <span>&nbsp;条, 共&nbsp;<span id="total"></span>  条</span>
+    </div>
+    <div class="pagination-box" id="pagination" data-total="10" data-page-size="2" data-page-current="1">
+    </div>
+
+</div>

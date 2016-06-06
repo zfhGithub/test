@@ -1,0 +1,299 @@
+﻿
+using MySql.Data.MySqlClient;
+using SqlOper;
+using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Data;
+using System.IO;
+using System.Linq;
+using System.Text;
+using System.Web;
+
+namespace Best.com
+{
+    public class product
+    {
+        /// <summary>
+        /// 产品推荐
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetProductHomeShow()
+        {
+            string strSql = " select g.id,GoodsName,c.className,Price,Title,GoodsDetail,Photos from goods g inner join goodsclass c on g.classid=c.id where deleted=0 AND HomeShow=1";
+            SqlHelper sqlOper = new SqlHelper();
+            DataTable dt = sqlOper.Selects(strSql);
+            return dt;
+        }
+        /// <summary>
+        /// 产品展示
+        /// </summary>
+        /// <returns></returns>
+        public DataTable GetProductHomeRecommend()
+        {
+            string strSql = " select g.id,GoodsName,c.className,Price,Title,GoodsDetail,Photos from goods g inner join goodsclass c on g.classid=c.id where deleted=0 AND HomeRecommend=1";
+            SqlHelper sqlOper = new SqlHelper();
+            DataTable dt = sqlOper.Selects(strSql);
+            return dt;
+        }
+        /// <summary>
+        /// 根据商品ID获取商品信息
+        /// </summary>
+        /// <param name="id">商品id</param>
+        /// <returns></returns>
+        public Hashtable GetProductById(string id)
+        {
+            string strSql = "select g.id,GoodsName,c.className,Price,Title,GoodsDetail,Photos,Images from goods g inner join goodsclass c on g.classid=c.id where g.id=" + id;
+            SqlOper.SqlHelper sqlOper = new SqlOper.SqlHelper();
+            Hashtable dt = sqlOper.Select(strSql);
+            return dt;
+        }
+
+        public DataTable GetProductClass()
+        {
+            string strSql = "select id,className from goodsclass";
+            SqlOper.SqlHelper sqlOper = new SqlOper.SqlHelper();
+            return sqlOper.Selects(strSql);
+        }
+        public DataTable GetProductListByClassID(string classID)
+        {
+            string w = "";
+            if (!classID.Equals("0"))
+            {
+                w = " and g.classid=" + classID;
+            }
+            string strSql = "select g.id,GoodsName,c.id classid,c.className,Price,Title,GoodsDetail,Photos  from goods g inner join goodsclass c on c.id=g.classid where 1=1 " + w;
+            SqlOper.SqlHelper sqlOper = new SqlOper.SqlHelper();
+            return sqlOper.Selects(strSql);
+        }
+
+        public DataTable GetProductList()
+        {
+            string strSql = "select g.id,GoodsName,Price,Title,GoodsDetail,Photos,gc.className from goods g inner join goodsclass gc on gc.id=g.ClassID where Deleted=0";
+            SqlOper.SqlHelper sh = new SqlOper.SqlHelper();
+            DataTable dt = sh.Selects(strSql);
+
+            return dt;
+        }
+
+        /// <summary>
+        /// 分页，模糊查询
+        /// </summary>
+        /// <param name="size">每页显示多少条数据</param>
+        /// <param name="index">当前页</param>
+        /// <param name="Goodno">按商品编号模糊查询</param>
+        /// <param name="name">按商品名称模糊查询</param>
+        /// <param name="Proclassify">按商品分类选中值查询</param>
+        /// <param name="CheckBox1">首页推荐查询</param>
+        /// <param name="CheckBox2">首页展示查询</param>
+        /// <returns></returns>
+        public Dictionary<string, object> GetProductPage(int size, int index,string Goodno,string name,string Proclassify,string CheckBox1,string CheckBox2)
+        {
+
+            int begin = (index - 1) * size;
+            SqlOper.SqlHelper Page = new SqlOper.SqlHelper();
+            string strWhere = "";
+            if (Goodno.Trim() != "")
+            {
+                strWhere += " and ( GoodsNo like '%" + Goodno + "%')";
+            }
+            if (name.Trim() != "")
+            {
+                if (strWhere == "")
+                    strWhere += "and (";
+                else
+                    strWhere =  strWhere.Substring(0, strWhere.Length - 1)+ " or " ;
+                strWhere += "  GoodsName like '%" + name + "%' )";
+            }
+            if (Proclassify != "")
+            {
+                strWhere += " and g.ClassID = '" + Proclassify + "' ";
+            }
+            if (CheckBox1!=null)
+            {
+                strWhere += " and HomeRecommend=1 ";
+            }
+            if (CheckBox2!=null)
+            {
+                strWhere += " and HomeShow=1 ";
+            }     
+            DataTable da = Page.Selects(@"select g.id,GoodsNo,GoodsName,c.className,Price,Title,GoodsDetail,HomeShow,HomeRecommend,Photos from goods g inner join goodsclass c on c.id=g.ClassID where Deleted=0 " + strWhere + " order by id asc limit " + begin + "," + size + "");
+            string count = SqlHelper.DataTableToJSON(Page.Selects("select count(*) as count from goods g inner join goodsclass c on c.id=g.ClassID where (GoodsName like '%" + name + "%' or GoodsNo like '%"+ Goodno + "%')"+ strWhere ));
+            string data = SqlHelper.DataTableToJSON(da);
+            Dictionary<string, object> dic = new Dictionary<string, object>();
+            dic.Add("data", data);
+            dic.Add("count", count);
+            return dic;
+        }
+
+        public string InsertOrEditProduct(string name, string price, string type, string head, string title, string detail, string pimage, string pnumber, string id = null,string tj=null,string zs=null)
+        {
+           string[] images = pimage.Split(',');
+            MySqlParameter[] msp;
+            if (id == null)
+            {
+                msp = new MySqlParameter[]
+                    {
+                       new MySqlParameter("goodsName", name), new MySqlParameter("GoodsDetail", detail),
+                       new MySqlParameter("ClassID", type), new MySqlParameter("Images", string.Join(";",images)),
+                       new MySqlParameter("Price",price), new MySqlParameter("Photos",head), new MySqlParameter("deleted","0"),
+                       new MySqlParameter("Title",title),new MySqlParameter("GoodsNo",pnumber),new MySqlParameter("Created",DateTime.Now)
+                    };
+            }
+            else
+            {
+                msp = new MySqlParameter[]
+                                {
+                       new MySqlParameter("goodsName", name), new MySqlParameter("GoodsDetail", detail),
+                       new MySqlParameter("ClassID", type), new MySqlParameter("Images", string.Join(";",images)),
+                       new MySqlParameter("Price",price), new MySqlParameter("Photos",head),  
+                       new MySqlParameter("Title",title),new MySqlParameter("GoodsNo",pnumber) ,new MySqlParameter("id", id ?? "")
+                                };
+
+            }
+            msp = new MySqlParameter[]
+                 {
+                       new MySqlParameter("goodsName", name), new MySqlParameter("GoodsDetail", detail),new MySqlParameter("HomeRecommend",tj=="true"?"1":"0"),
+                       new MySqlParameter("ClassID", type), new MySqlParameter("Images", pimage),new MySqlParameter("HomeShow",zs=="true"?"1":"0"),
+                       new MySqlParameter("Price",price), new MySqlParameter("Photos",head), new MySqlParameter("deleted","0"),
+                       new MySqlParameter("Title",title),new MySqlParameter("GoodsNo",pnumber),new MySqlParameter("Created",DateTime.Now),new MySqlParameter("id", id ?? "")
+                 };
+
+            string strSql = "";
+            if (id == null)
+            {
+                strSql = @"insert into goods(goodsName,GoodsNo,ClassID,Price,Title,GoodsDetail,HomeRecommend,HomeShow,Photos,deleted,Images,Created) VALUES
+                                (?goodsName,?GoodsNo,?ClassID, ?Price,?Title,?GoodsDetail,?HomeRecommend,?HomeShow, ?Photos, ?deleted, ?Images,?Created)";
+            }
+            else
+            {
+                strSql = @" UPDATE goods set GoodsName=?goodsName,GoodsNo=?GoodsNo,ClassID=?ClassID,Price=?Price,Title=?Title,GoodsDetail=?GoodsDetail,HomeShow=?HomeShow,HomeRecommend=?HomeRecommend,Photos=?Photos,Images=?Images 
+                              where id = ?id";
+            }
+
+            SqlOper.SqlHelper sqlHelper = new SqlOper.SqlHelper();
+            int count = sqlHelper.ExecutionMySql(strSql, msp);
+            if (count > 0)
+            {
+                return "{ \"statusCode\":\"200\",\"message\":\"保存成功\" }";
+            }
+            else
+            {
+                return "{ \"statusCode\":\"300\",\"message\":\"保存失败\"}";
+            }
+        }
+        /// <summary>
+        /// 模糊查询
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="name"></param>
+        /// <returns></returns>
+        public DataTable GetLikeSelect(string id,string name) {
+            SqlOper.SqlHelper like = new SqlOper.SqlHelper();
+            DataTable  dt=like.Selects(@"select id,GoodsName,Price,Title,GoodsDetail,Photos from goods where id like '%" + id + "%' or GoodsName like '%" + name + "%'");
+            return dt;
+        }
+
+        public string UploadImage(HttpPostedFile file,string type)
+        {
+            if (type=="head")
+            {
+                if (file.ContentLength > 2097152)
+                {
+                  return "{\"status\":\"0\",\"statusCode\":\"300\"}"; 
+                }
+                String filepath = HttpContext.Current.Server.MapPath("~") + @"image\head\";
+                if (!Directory.Exists(filepath))
+                {
+                    Directory.CreateDirectory(filepath);
+                }
+                String fileName = Guid.NewGuid() + ".png";
+                file.SaveAs(filepath + fileName); 
+                string rt = Utils.GetThumbnail(filepath + fileName, filepath + "best-" + fileName, 160, 100, "best-" + fileName);
+                return rt;
+            }
+            else if (type== "kindeditor")
+            {
+                if (file.ContentLength > 5242880)
+                {
+                    return "{ \"statusCode\":\"300\",\"message\":\"文件不能超过5兆\"}";
+                }
+                String filepath = HttpContext.Current.Server.MapPath("~") + @"image\detail\";
+                if (!Directory.Exists(filepath))
+                {
+                    Directory.CreateDirectory(filepath);
+                }
+                try
+                { 
+                    String fileName = Guid.NewGuid() + ".png";
+                    file.SaveAs(filepath + fileName);
+                    // return "{ \"statusCode\":\"200\",\"message\":\"上传成功\",\"src\":\""+fileName+"\"}";
+                    return "{ \"error\":0,\"url\":\"/image/detail/" + fileName + "\"}";
+                }
+                catch
+                {
+                    return "{ \"statusCode\":\"300\",\"message\":\"上传失败\"}";
+                }
+            }
+            else
+            {
+                if (file.ContentLength > 5242880)
+                {
+                    return "{ \"statusCode\":\"300\",\"message\":\"文件不能超过5兆\"}";
+                }
+                String filepath = HttpContext.Current.Server.MapPath("~") + @"image\product\";
+                if (!Directory.Exists(filepath))
+                {
+                    Directory.CreateDirectory(filepath);
+                }
+                try
+                {
+                    String fileName = Guid.NewGuid() + ".png";
+                    file.SaveAs(filepath + fileName);
+                    //   Utils.GetThumbnail(filepath + fileName, filepath + "best-" + fileName, 160, 100, "best-" + fileName);
+                    Utils.SetPicDescription(filepath + fileName); 
+                   return "{ \"statusCode\":\"200\",\"message\":\"上传成功\",\"src\":\"" + fileName + "\"}";
+                }
+                catch  
+                {
+                    return "{ \"statusCode\":\"300\",\"message\":\"上传失败\"}";
+                }
+              
+            } 
+        }
+
+        public string deleted(string id)
+        {
+            string strSql = "update goods set deleted=1 where id="+id;
+            SqlHelper sh = new SqlHelper();
+           int count = sh.ExecutionMySql(strSql);
+            if (count>0)
+            {
+                return "{\"statusCode\":200,\"message\":\"删除成功\"}";
+            }
+            else
+            {
+                return "{\"statusCode\":300,\"message\":\"删除失败\"}";
+            }
+        }
+        public string getProduct(string id)
+        {
+            string strSql = @"SELECT g.id,g.GoodsName,GoodsNo,g.ClassID,Price,Title,GoodsDetail,HomeShow,HomeRecommend,Photos,Images 
+                                from goods g inner join goodsclass c on g.ClassID = c.id where Deleted = 0 and g.id=" + id;
+            SqlHelper sh = new SqlHelper();
+            return SqlHelper.DataTableToJSON(sh.Selects(strSql));
+        }
+        /// <summary>
+        /// 显示评论列表
+        /// </summary>
+        /// <returns></returns>
+        public  DataTable SelComment(int index,int size) {
+
+            int begin = (index - 1) * size;
+            string CommentStr = @"select * from userdetail where userid limit "+begin+","+size+"";
+            SqlOper.SqlHelper Com = new SqlOper.SqlHelper();
+           DataTable dt= Com.Selects(CommentStr);
+            return dt;
+        }
+    }
+}

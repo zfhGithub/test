@@ -24,7 +24,7 @@ function product_upload_success(file, data) {
 }
 function kindeditor_upload_success(url) {
     alert(url);
-    console.log(url);
+   
 }
 $("#btnAddProductSave").on("click", function (e) {
     if (editid) {
@@ -39,7 +39,7 @@ function removeImage(_this) {
     var val = $("#pproduct").val(); 
     val = val.replace(src + ";", "").replace(src,"");
     $("#pproduct").val(val);
-    console.log(val);
+   
     $(_this).parent().parent().parent().remove();
 }
   
@@ -84,8 +84,7 @@ $(function  () {
         var editor = K.editor({
             allowFileManager: true
         });
-        console.log(editor);
-      
+    
                 editor.plugin.multiImageDialog({
                     clickFn: function (urlList) {
                         console.log(urlList);

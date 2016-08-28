@@ -124,8 +124,7 @@
             if (isNaN(Number(InputValue))||InputValue=="") {
                 $(this).alertmsg('warn', '请输入数字');
                 return;
-            }       
-            console.log(InputValue);
+            }        
             pageIndex = InputValue;
             ProductInfo();
         });
@@ -158,12 +157,7 @@
             <label>商品分类:</label>
                 <select name="type" id="Protype" data-toggle="selectpicker">
                     <option value="" selected>请选择</option>
-                    <option value="1">棒球帽</option>
-                    <option value="2">平板帽</option>
-                    <option value="3">网帽</option>
-                    <option value="4">针织帽</option>
-                    <option value="5">五片帽</option>
-                    <option value="6">边帽</option>
+                     
                 </select>&nbsp;     
 
             <label>商品编号：</label><input type="text" id="customNo" value="" name="code" class="form-control" size="10">&nbsp;

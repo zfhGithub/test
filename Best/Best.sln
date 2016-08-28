@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 14
-VisualStudioVersion = 14.0.24720.0
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Best", "Best\Best.csproj", "{3E80147D-24C8-4C1D-A920-8518610855FB}"
 EndProject
@@ -24,15 +24,5 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(SourceCodeControl) = preSolution
-		SccNumberOfProjects = 3
-		SccLocalPath0 = .
-		SccProjectUniqueName1 = Best\\Best.csproj
-		SccLocalPath1 = .
-		SccProjectFilePathRelativizedFromConnection1 = Best\\
-		SccProjectUniqueName2 = MySqlOper\\SqlOper.csproj
-		SccLocalPath2 = .
-		SccProjectFilePathRelativizedFromConnection2 = MySqlOper\\
 	EndGlobalSection
 EndGlobal

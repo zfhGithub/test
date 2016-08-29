@@ -15,11 +15,14 @@ namespace Best.com
             {   new MySqlParameter("name", name),
                 new MySqlParameter("email", email),
                 new MySqlParameter("phone",phone),
-                new MySqlParameter("content",content)
+                new MySqlParameter("content",content),
+                new MySqlParameter("Whetherread","0"),
+                new MySqlParameter("deleted","0"),
+                new MySqlParameter("Created",DateTime.Now)
             };
             //msp.Value = name;
             SqlOper.SqlHelper sqlHelper = new SqlOper.SqlHelper();
-            string strSql = "INSERT INTO messageboard (Name,Email,Phone,Message) VALUES( ?name,?email,?phone,?content)";
+            string strSql = "INSERT INTO messageboard (Name,Email,Phone,Message,Whetherread,deleted,Created) VALUES( ?name,?email,?phone,?content,?Whetherread,?deleted,?Created)";
             int count = sqlHelper.ExecutionMySql(strSql, msp);
             return count;
         }

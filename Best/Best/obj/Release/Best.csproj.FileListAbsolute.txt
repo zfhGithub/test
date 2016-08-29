@@ -1,0 +1,9 @@
+D:\GitHub\test\Best\Best\bin\Best.dll.config
+D:\GitHub\test\Best\Best\bin\Best.dll
+D:\GitHub\test\Best\Best\bin\Best.pdb
+D:\GitHub\test\Best\Best\bin\SqlOper.dll
+D:\GitHub\test\Best\Best\bin\Newtonsoft.Json.dll
+D:\GitHub\test\Best\Best\bin\SqlOper.pdb
+D:\GitHub\test\Best\Best\obj\Release\Best.csprojResolveAssemblyReference.cache
+D:\GitHub\test\Best\Best\obj\Release\Best.dll
+D:\GitHub\test\Best\Best\obj\Release\Best.pdb

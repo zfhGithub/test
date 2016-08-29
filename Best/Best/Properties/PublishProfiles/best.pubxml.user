@@ -13,10 +13,10 @@
       <publishTime>05/25/2016 20:50:23</publishTime>
     </File>
     <File Include="admin/changepwd.html">
-      <publishTime>06/03/2016 19:34:47</publishTime>
+      <publishTime>06/23/2016 11:06:45</publishTime>
     </File>
     <File Include="admin/Index.aspx">
-      <publishTime>06/04/2016 21:41:08</publishTime>
+      <publishTime>07/06/2016 09:43:47</publishTime>
     </File>
     <File Include="admin/index_layout.html">
       <publishTime>05/17/2016 19:55:56</publishTime>
@@ -1714,19 +1714,22 @@
       <publishTime>05/16/2016 20:50:18</publishTime>
     </File>
     <File Include="admin/product/AddProduct.html">
-      <publishTime>06/04/2016 21:31:46</publishTime>
+      <publishTime>06/23/2016 08:22:34</publishTime>
     </File>
     <File Include="admin/product/CommentManagement.html">
-      <publishTime>06/04/2016 21:40:12</publishTime>
+      <publishTime>06/23/2016 11:48:30</publishTime>
     </File>
     <File Include="admin/product/ProductShow.aspx">
       <publishTime>05/31/2016 19:14:21</publishTime>
     </File>
     <File Include="admin/product/ProductTable.html">
-      <publishTime>06/04/2016 19:22:28</publishTime>
+      <publishTime>06/23/2016 11:56:31</publishTime>
     </File>
     <File Include="admin/product/ProductUpdate.aspx">
       <publishTime>05/22/2016 20:07:34</publishTime>
+    </File>
+    <File Include="admin/settings/setBanner.html">
+      <publishTime>07/06/2016 11:37:15</publishTime>
     </File>
     <File Include="B-JUI/ajax/area_all.html">
       <publishTime>05/14/2016 19:44:47</publishTime>
@@ -3535,13 +3538,13 @@
       <publishTime>05/14/2016 19:44:53</publishTime>
     </File>
     <File Include="bin/App_global.asax.compiled">
-      <publishTime>06/04/2016 21:51:39</publishTime>
+      <publishTime>08/09/2016 14:24:16</publishTime>
     </File>
     <File Include="bin/App_global.asax.dll">
-      <publishTime>06/04/2016 21:51:38</publishTime>
+      <publishTime>08/09/2016 14:24:16</publishTime>
     </File>
     <File Include="bin/Best.dll">
-      <publishTime>06/04/2016 21:51:35</publishTime>
+      <publishTime>08/09/2016 14:24:03</publishTime>
     </File>
     <File Include="bin/Best.dll.config">
       <publishTime>05/31/2016 21:00:02</publishTime>
@@ -3556,34 +3559,34 @@
       <publishTime>06/04/2016 21:38:11</publishTime>
     </File>
     <File Include="bin/SqlOper.dll">
-      <publishTime>06/04/2016 21:40:12</publishTime>
+      <publishTime>08/09/2016 14:24:03</publishTime>
     </File>
     <File Include="col.aspx">
-      <publishTime>06/04/2016 15:22:07</publishTime>
+      <publishTime>06/23/2016 18:06:00</publishTime>
     </File>
     <File Include="contact.aspx">
-      <publishTime>06/04/2016 15:22:27</publishTime>
+      <publishTime>06/23/2016 18:05:56</publishTime>
     </File>
     <File Include="default.aspx">
       <publishTime>06/02/2016 21:31:18</publishTime>
     </File>
     <File Include="Demo.aspx">
-      <publishTime>06/04/2016 21:40:12</publishTime>
+      <publishTime>06/23/2016 18:06:06</publishTime>
     </File>
     <File Include="HtmlPage1.html">
       <publishTime>05/18/2016 19:59:23</publishTime>
     </File>
     <File Include="image/banner1.jpg">
-      <publishTime>05/13/2016 20:13:54</publishTime>
+      <publishTime>07/15/2016 10:17:07</publishTime>
     </File>
     <File Include="image/banner2.jpg">
-      <publishTime>05/13/2016 20:13:54</publishTime>
+      <publishTime>07/15/2016 10:17:07</publishTime>
     </File>
     <File Include="image/banner3.jpg">
-      <publishTime>05/13/2016 20:13:54</publishTime>
+      <publishTime>07/15/2016 10:17:07</publishTime>
     </File>
     <File Include="image/col.jpg">
-      <publishTime>05/25/2016 19:26:25</publishTime>
+      <publishTime>07/15/2016 10:17:07</publishTime>
     </File>
     <File Include="image/product/1.jpg">
       <publishTime>06/04/2016 21:40:12</publishTime>
@@ -3592,19 +3595,19 @@
       <publishTime>06/04/2016 21:40:12</publishTime>
     </File>
     <File Include="image/product/3.jpg">
-      <publishTime>06/04/2016 21:40:12</publishTime>
+      <publishTime>06/06/2016 11:25:36</publishTime>
     </File>
     <File Include="image/product/4.jpg">
-      <publishTime>06/04/2016 21:40:12</publishTime>
+      <publishTime>06/06/2016 11:25:37</publishTime>
     </File>
     <File Include="image/product/5.jpg">
-      <publishTime>06/04/2016 21:40:12</publishTime>
+      <publishTime>06/06/2016 11:25:37</publishTime>
     </File>
     <File Include="image/product/6.jpg">
-      <publishTime>06/04/2016 21:40:12</publishTime>
+      <publishTime>06/06/2016 11:25:37</publishTime>
     </File>
     <File Include="index.aspx">
-      <publishTime>06/04/2016 21:41:08</publishTime>
+      <publishTime>07/06/2016 11:44:39</publishTime>
     </File>
     <File Include="index1.aspx">
       <publishTime>06/02/2016 21:30:38</publishTime>
@@ -3612,23 +3615,29 @@
     <File Include="js/jquery-core.min.js">
       <publishTime>05/22/2016 20:51:45</publishTime>
     </File>
+    <File Include="js/Language-en.js">
+      <publishTime>07/15/2016 16:48:33</publishTime>
+    </File>
+    <File Include="js/Language-zh-cn.js">
+      <publishTime>07/02/2016 17:30:08</publishTime>
+    </File>
     <File Include="msgBoard.aspx">
-      <publishTime>06/04/2016 15:22:15</publishTime>
+      <publishTime>06/23/2016 18:05:52</publishTime>
     </File>
     <File Include="nr.aspx">
-      <publishTime>06/04/2016 15:22:40</publishTime>
+      <publishTime>06/23/2016 18:05:48</publishTime>
     </File>
     <File Include="pd.aspx">
-      <publishTime>06/04/2016 15:37:27</publishTime>
+      <publishTime>06/23/2016 18:05:36</publishTime>
     </File>
     <File Include="pr.aspx">
-      <publishTime>06/04/2016 16:04:05</publishTime>
+      <publishTime>07/15/2016 18:24:16</publishTime>
     </File>
     <File Include="PrecompiledApp.config">
-      <publishTime>06/04/2016 21:51:38</publishTime>
+      <publishTime>08/09/2016 14:24:15</publishTime>
     </File>
     <File Include="Web.config">
-      <publishTime>06/04/2016 21:38:35</publishTime>
+      <publishTime>07/15/2016 15:08:31</publishTime>
     </File>
   </ItemGroup>
 </Project>

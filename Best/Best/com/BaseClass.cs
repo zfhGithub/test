@@ -15,6 +15,19 @@ namespace Best.com
                 Response.Redirect("/admin/login.aspx");
             }
         }
-     
+        private static string language;
+
+        public static string Language
+        {
+            get
+            {
+                return language;
+            }
+
+            set
+            {
+                language = value;
+            }
+        }
     }
 }

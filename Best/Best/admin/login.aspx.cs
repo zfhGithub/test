@@ -31,6 +31,11 @@ namespace Best.admin
                     Session["UserInfo"] = table["username"];
                     Response.Redirect("Index.aspx");
                 }
+                else
+                {
+                    txtErrorMsg.Text = "账号或密码错误！";
+                    txtErrorMsg.Visible = true;
+                }
             }
         }
     }

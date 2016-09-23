@@ -7,8 +7,8 @@
     <ProjectGuid>{37ABCF99-953D-4325-AE07-37AB9A944629}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>MySqlOper</RootNamespace>
-    <AssemblyName>MySqlOper</AssemblyName>
+    <RootNamespace>SqlOper</RootNamespace>
+    <AssemblyName>SqlOper</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <SccProjectName>
@@ -63,24 +63,7 @@
     <Compile Include="Utils.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Debug\MySql.Data.dll" />
-    <Content Include="bin\Debug\Newtonsoft.Json.dll" />
-    <Content Include="bin\Debug\SqlOper.dll" />
-    <Content Include="bin\Debug\SqlOper.pdb" />
     <Content Include="MySqlOper.csproj.user" />
-    <Content Include="obj\Debug\MySqlOper.csproj.FileListAbsolute.txt" />
-    <Content Include="obj\Debug\SqlOper.csproj.FileListAbsolute.txt" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <None Include="obj\Debug\MySqlOper.csprojResolveAssemblyReference.cache" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="bin\Release\" />
-    <Folder Include="obj\Debug\TempPE\" />
-  </ItemGroup>
-  <ItemGroup>
-    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

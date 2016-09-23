@@ -1,2 +1,5 @@
 *.scc
 *.vssscc
+/Best/Best/bin
+/Best/MySqlOper/obj
+/Best/MySqlOper/bin

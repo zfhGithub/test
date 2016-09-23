@@ -13,6 +13,7 @@ namespace Best.admin
     /// </summary>
     public class ajax : IHttpHandler
     {
+
         public void ProcessRequest(HttpContext context)
         {
             context.Response.ContentType = "text/plain";
@@ -80,8 +81,18 @@ namespace Best.admin
                     case "GetComment":
                         int Commentindex = int.Parse(req.Params["Comindex"]);
                         int CommentSize = int.Parse(req.Params["ComSize"]);
-
                         context.Response.Write(SqlHelper.ToJosn(pro.SelComment(Commentindex, CommentSize)));
+                        break;
+                    case "CommentId":
+                        string Comid = req.QueryString["Cid"];
+                        res.Write(pro.ComDelete(Comid));
+                        break;
+                    case "fetch":
+                        string fetchid = req.QueryString["fetchid"];
+                        res.Write(pro.SetWhetherread(fetchid));
+                        break;
+                    case "changepwd":
+                        res.Write(pro.ChangePwd(req.Form["pass"],req.Form["jpass"]));
                         break;
                 }
             }

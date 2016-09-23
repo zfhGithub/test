@@ -621,9 +621,8 @@
     <Content Include="admin\login.aspx" />
     <Content Include="admin\product\AddProduct.html" />
     <Content Include="admin\product\CommentManagement.html" />
-    <Content Include="admin\product\ProductShow.aspx" />
     <Content Include="admin\product\ProductTable.html" />
-    <Content Include="admin\product\ProductUpdate.aspx" />
+    <Content Include="admin\settings\setBanner.html" />
     <Content Include="B-JUI\ajaxDone1.html" />
     <Content Include="B-JUI\ajaxDone2.html" />
     <Content Include="B-JUI\ajaxDone3.html" />
@@ -1209,36 +1208,25 @@
     <Content Include="B-JUI\table-layout.html" />
     <Content Include="B-JUI\table.html" />
     <Content Include="B-JUI\tabs.html" />
-    <Content Include="bin\Best.dll" />
-    <Content Include="bin\Best.pdb" />
-    <Content Include="bin\MySql.Data.dll" />
-    <Content Include="bin\MySqlOper.dll" />
-    <Content Include="bin\MySqlOper.pdb" />
-    <Content Include="bin\Newtonsoft.Json.dll" />
-    <Content Include="bin\SqlOper.dll" />
     <Content Include="col.aspx" />
     <Content Include="contact.aspx" />
     <Content Include="default.aspx" />
-    <Content Include="Demo.aspx" />
     <Content Include="image\col.jpg" />
     <Content Include="index.aspx" />
     <Content Include="Global.asax" />
     <Content Include="image\banner1.jpg" />
     <Content Include="image\banner2.jpg" />
     <Content Include="image\banner3.jpg" />
-    <Content Include="image\product\1.jpg" />
-    <Content Include="image\product\2.jpg" />
-    <Content Include="image\product\5.jpg" />
-    <Content Include="image\product\3.jpg" />
-    <Content Include="image\product\4.jpg" />
-    <Content Include="image\product\6.jpg" />
     <Content Include="js\jquery-core.min.js" />
+    <Content Include="js\Language-en.js" />
+    <Content Include="js\Language-zh-cn.js" />
     <Content Include="msgBoard.aspx" />
     <Content Include="nr.aspx" />
-    <Content Include="obj\Debug\Best.csproj.FileListAbsolute.txt" />
     <Content Include="pd.aspx" />
     <Content Include="pr.aspx" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="admin\ajax.ashx.cs">
@@ -1257,20 +1245,6 @@
     </Compile>
     <Compile Include="admin\login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\product\ProductShow.aspx.cs">
-      <DependentUpon>ProductShow.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\product\ProductShow.aspx.designer.cs">
-      <DependentUpon>ProductShow.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="admin\product\ProductUpdate.aspx.cs">
-      <DependentUpon>ProductUpdate.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="admin\product\ProductUpdate.aspx.designer.cs">
-      <DependentUpon>ProductUpdate.aspx</DependentUpon>
     </Compile>
     <Compile Include="col.aspx.cs">
       <DependentUpon>col.aspx</DependentUpon>
@@ -1297,13 +1271,6 @@
     </Compile>
     <Compile Include="default.aspx.designer.cs">
       <DependentUpon>default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Demo.aspx.cs">
-      <DependentUpon>Demo.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="Demo.aspx.designer.cs">
-      <DependentUpon>Demo.aspx</DependentUpon>
     </Compile>
     <Compile Include="index.aspx.cs">
       <DependentUpon>index.aspx</DependentUpon>
@@ -1382,9 +1349,6 @@
     <Content Include="admin\js\BJUI\themes\fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="admin\js\BJUI\themes\fonts\glyphicons-halflings-regular.woff" />
     <Content Include="admin\ajax.ashx" />
-    <Content Include="bin\Best.dll.config" />
-    <Content Include="obj\Debug\DesignTimeResolveAssemblyReferencesInput.cache" />
-    <Content Include="obj\Debug\Best.csprojResolveAssemblyReference.cache" />
     <None Include="Properties\PublishProfiles\best.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -1395,7 +1359,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="B-JUI\font\" />
-    <Folder Include="obj\Debug\TempPE\" />
+    <Folder Include="image\product\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MySqlOper\SqlOper.csproj">

@@ -14,28 +14,43 @@ namespace Best
         public DataTable homeRecommendDt = new DataTable();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!string.IsNullOrWhiteSpace(Request.QueryString["action"]) && Request.QueryString["action"] == "addmsg")
+            try
             {
-                string name = Request.Params["name"];
-                string email = Request.Params["email"];
-                string phone = Request.Params["phone"];
-                string content = Request.Params["content"];
-               com.msgBoard mb = new com.msgBoard();
+                if (!string.IsNullOrWhiteSpace(Request.QueryString["action"]) && Request.QueryString["action"] == "addmsg")
+                {
+                    string name = Request.Params["name"];
+                    string email = Request.Params["email"];
+                    string phone = Request.Params["phone"];
+                    string content = Request.Params["content"];
+                    com.msgBoard mb = new com.msgBoard();
 
-               int count = mb.addMsgBoard(name, email, phone, content);
-                if (count > 0)
-                {
-                    Response.Write("success");
+                    int count = mb.addMsgBoard(name, email, phone, content);
+                    if (count > 0)
+                    {
+                        Response.Write("success");
+                    }
+                    else
+                    {
+                        Response.Write("error");
+                    }
+                    Response.End();
                 }
-                else
+                if (!string.IsNullOrWhiteSpace(Request.QueryString["l"]) && Request.QueryString["l"] == "zh-cn")
                 {
-                    Response.Write("error");
+                    SqlOper.Utils.Language = "zh-cn";
                 }
-                Response.End();
+                else if (!string.IsNullOrWhiteSpace(Request.QueryString["l"]) && Request.QueryString["l"] == "en")
+                {
+                    SqlOper.Utils.Language = "en";
+                }
+                com.product pro = new com.product();
+                homeShowDt = pro.GetProductHomeShow();
+                homeRecommendDt = pro.GetProductHomeRecommend();
             }
-            com.product pro = new com.product();
-            homeShowDt = pro.GetProductHomeShow();
-            homeRecommendDt = pro.GetProductHomeRecommend();
+            catch (Exception  )
+            { 
+            }
+        
         }
     }
 }

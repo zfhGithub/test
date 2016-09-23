@@ -7,3 +7,12 @@ D:\GitHub\test\Best\Best\bin\SqlOper.pdb
 D:\GitHub\test\Best\Best\obj\Debug\Best.csprojResolveAssemblyReference.cache
 D:\GitHub\test\Best\Best\obj\Debug\Best.dll
 D:\GitHub\test\Best\Best\obj\Debug\Best.pdb
+D:\workpace\codes\projects\test\Best\Best\bin\Best.dll.config
+D:\workpace\codes\projects\test\Best\Best\bin\Best.dll
+D:\workpace\codes\projects\test\Best\Best\bin\Best.pdb
+D:\workpace\codes\projects\test\Best\Best\bin\SqlOper.dll
+D:\workpace\codes\projects\test\Best\Best\bin\Newtonsoft.Json.dll
+D:\workpace\codes\projects\test\Best\Best\bin\SqlOper.pdb
+D:\workpace\codes\projects\test\Best\Best\obj\Debug\Best.csprojResolveAssemblyReference.cache
+D:\workpace\codes\projects\test\Best\Best\obj\Debug\Best.dll
+D:\workpace\codes\projects\test\Best\Best\obj\Debug\Best.pdb

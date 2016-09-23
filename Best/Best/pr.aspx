@@ -551,7 +551,7 @@
                 <table class='propDiv productName productNameWordWrap ' cellpadding='0' cellspacing='0'>
                 <tr>
                 <td>
-                <a hidefocus='true' href='pd.aspx?id=46' target='_blank' title='<%= row["GoodsName"] %>'><%= row["GoodsName"] %></a>
+                <a hidefocus='true' href='pd.aspx?id=<%= row["id"] %>' target='_blank' title='<%= row["GoodsName"] %>'><%= row["GoodsName"] %></a>
                 </td>
                 </tr>
                 </table>

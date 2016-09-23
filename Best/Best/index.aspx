@@ -391,7 +391,7 @@
 <tr>
 <td style='overflow:hidden;' valign='middle' align='center'>
 					<a hidefocus='true' href='pd.aspx?id=<%= row["id"] %>' target='_blank'>
-<img src='/image/head/<%= row["Photos"] %>'  style='width:160px;height:100px;' alt='bab121212y帽1' title=''/>
+<img src='/image/head/<%= row["Photos"] %>'  style='width:160px;height:100px;' alt='<%= row["GoodsName"] %>' title=''/>
 </a></td>
 </tr>
 </table>
@@ -440,77 +440,103 @@
 <td class='formMiddleLeft formMiddleLeft370'></td>
 <td class='formMiddleCenter formMiddleCenter370' valign='top'>
 <div class='formMiddleContent formMiddleContent370  ' tabStyle='0'>
-<div id='productList370'  class='productList' picWidth='160' picHeight='160'>
+    <div id='productList370' class='productList' picwidth='160' picheight='160'>
 
-    <% for (int i = 0; i < homeRecommendDt.Rows.Count -1; i++)
-        {
-            DataRow row = homeRecommendDt.Rows[i]; 
-                %>
+        <% for (int i = 0; i < homeRecommendDt.Rows.Count - 1; i++)
+            {
+                DataRow row = homeRecommendDt.Rows[i];
+        %>
 
-    <div class='doubleProduct'>
-        <div topClassName='top1' topSwitch='on'  productId='54' productName='<%=row["GoodsName"] %>' class='productDoublePicListForm' id='module370product54' faiWidth='160' faiHeight='102' faiWidthOr='500' faiHeightOr='320'>
-            <table id='double_formTable54_module370' class='formTable' cellpadding='0' cellspacing='0'>
-                <tr>
-                  <td class='imgDiv'>
-                        <table cellpadding='0' cellspacing='0'>
-                            <tr>
-                                <td>
-                                    <a hidefocus='true' href='pd.aspx?id=<%= row["id"] %>' target='_blank'>
-                                    <img alt='<%=row["GoodsName"] %>' title='' src='/image/head/<%= row["Photos"] %>' />
-                                    </a>
-                                </td>
-                            </tr>
-                        </table>
-                </td>
-                    <td class='propList' style=''>
-                        <div class='propDiv productName     ' >
-                        <a hidefocus='true' href='pd.aspx?id=<%= row["id"] %>' target='_blank' title='<%=row["GoodsName"] %>'><%= row["Title"] %></a>
-                        </div>
-                        <div  style="word-wrap:break-word;width:250px; height:80px;   overflow:hidden;text-overflow:ellipsis;-o-text-overflow:ellipsis;">
-                           <%= row["GoodsDetail"] %>
-                        </div> 
-                    </td>
-                </tr>
-            </table>
-    </div>
-       <%   i++;  row = homeRecommendDt.Rows[i]; %>
-         <div topClassName='top1' topSwitch='on'  productId='47' productName='<%=row["GoodsName"] %>' class='productDoublePicListForm' id='module370product47' faiWidth='160' faiHeight='100' faiWidthOr='189' faiHeightOr='119'>
-<table id='double_formTable47_module370' class='formTable' cellpadding='0' cellspacing='0'>
-<tr>
-<td class='imgDiv'>
-<table cellpadding='0' cellspacing='0'>
-<tr>
-<td>
-<a hidefocus='true' href='pd.aspx?id=<%= row["id"] %>' target='_blank'>
-<img alt='<%=row["GoodsName"] %>' title='' src='/image/head/<%= row["Photos"] %>' />
-</a>
-</td>
-</tr>
-</table>
-</td>
-<td class='propList' style=''>
-      <div class='propDiv productName     ' >
-                        <a hidefocus='true' href='pd.aspx?id=<%= row["id"] %>' target='_blank' title='<%=row["GoodsName"] %>'><%= row["Title"] %></a>
-                        </div>
-                        <div  style="word-wrap:break-word;width:250px; height:80px;   overflow:hidden;text-overflow:ellipsis;-o-text-overflow:ellipsis;">
-                          <%= row["GoodsDetail"] %>
-                        </div> 
-</td>
-</tr>
-</table>
-</div>
-   </div>
-    <%    } %>
+        <div class='doubleProduct'>
+            <div topclassname='top1' topswitch='on' productid='54' productname='<%=row["GoodsName"] %>' class='productDoublePicListForm' faiwidth='160' faiheight='102' faiwidthor='200' faiheightor='320'>
+                <table id='double_formTable54_module370' class='formTable' cellpadding='0' cellspacing='0'>
+                    <tr>
+                        <td class='imgDiv'>
+                            <table cellpadding='0' cellspacing='0'>
+                                <tr>
+                                    <td>
+                                        <a hidefocus='true' href='pd.aspx?id=<%= row["id"] %>' target='_blank'>
+                                            <img alt='<%=row["GoodsName"] %>' title='' src='/image/head/<%= row["Photos"] %>' />
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class='propList' style=''>
+                            <div class='propDiv productName     '>
+                                <a hidefocus='true' href='pd.aspx?id=<%= row["id"] %>' target='_blank' title='<%=row["GoodsName"] %>'><%= row["Title"] %></a>
+                            </div>
+                            <div style="word-wrap: break-word; width: 250px; height: 80px; overflow: hidden; text-overflow: ellipsis; -o-text-overflow: ellipsis;">
+                                <%= row["GoodsDetail"] %>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <%   i++; if (i>=homeRecommendDt.Rows.Count) { continue; } row = homeRecommendDt.Rows[i]; %>
+            <div topclassname='top1' topswitch='on' productid='47' productname='<%=row["GoodsName"] %>' class='productDoublePicListForm' faiwidth='160' faiheight='100' faiwidthor='189' faiheightor='119'>
+                <table id='double_formTable47_module370' class='formTable' cellpadding='0' cellspacing='0'>
+                    <tr>
+                        <td class='imgDiv'>
+                            <table cellpadding='0' cellspacing='0'>
+                                <tr>
+                                    <td>
+                                        <a hidefocus='true' href='pd.aspx?id=<%= row["id"] %>' target='_blank'>
+                                            <img alt='<%=row["GoodsName"] %>' title='' src='/image/head/<%= row["Photos"] %>' />
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class='propList' style=''>
+                            <div class='propDiv productName     '>
+                                <a hidefocus='true' href='pd.aspx?id=<%= row["id"] %>' target='_blank' title='<%=row["GoodsName"] %>'><%= row["Title"] %></a>
+                            </div>
+                            <div style="word-wrap: break-word; width: 250px; height: 80px; overflow: hidden; text-overflow: ellipsis; -o-text-overflow: ellipsis;">
+                                <%= row["GoodsDetail"] %>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+       
+               <div topclassname='top1' topswitch='on' productid='47' productname='<%=row["GoodsName"] %>' class='productDoublePicListForm' faiwidth='160' faiheight='100' faiwidthor='189' faiheightor='119'>
+                <table id='double_formTable47_module370' class='formTable' cellpadding='0' cellspacing='0'>
+                    <tr>
+                        <td class='imgDiv'>
+                            <table cellpadding='0' cellspacing='0'>
+                                <tr>
+                                    <td>
+                                        <a hidefocus='true' href='pd.aspx?id=<%= row["id"] %>' target='_blank'>
+                                            <img alt='<%=row["GoodsName"] %>' title='' src='/image/head/<%= row["Photos"] %>' />
+                                        </a>
+                                    </td>
+                                </tr>
+                            </table>
+                        </td>
+                        <td class='propList' style=''>
+                            <div class='propDiv productName     '>
+                                <a hidefocus='true' href='pd.aspx?id=<%= row["id"] %>' target='_blank' title='<%=row["GoodsName"] %>'><%= row["Title"] %></a>
+                            </div>
+                            <div style="word-wrap: break-word; width: 250px; height: 80px; overflow: hidden; text-overflow: ellipsis; -o-text-overflow: ellipsis;">
+                                <%= row["GoodsDetail"] %>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+             </div>
+        <%    } %>
 
- 
-<div class='clearfloat'></div>
-<%--<div id='pagenation370' class='pagenation'>
+
+        <div class='clearfloat'></div>
+        <%--<div id='pagenation370' class='pagenation'>
 <div class='pagePrev'>
 <span>上一页</span></div>
 <div class='pageNo'><span>1</span></div>
 <div class='pageNext'><span>下一页</span></div>
 </div>--%>
-</div>
+    </div>
 </div>
 </td>
 <td class='formMiddleRight formMiddleRight370'></td>
@@ -1137,8 +1163,8 @@ Fai.top.Product325.tgOpt = {"mallShowBuy":false,"productSelect":true,"targetPare
     {
         DataRow row = homeShowDt.Rows[i];
          %> 
-    var type = best.producttype('<%= row["className"]%>')
-    productList.push({ "product<%= row["id"]%>": "[{\"propName\":\"" + best.type + "\",\"propValue\":\"" + type + "\"},{\"propName\":\"" + best.numbering + "\",\"propValue\":\"<%= row["GoodsNo"]%>\"}]", "productName": "<%= row["GoodsName"]%>", "productBuyBtnText": "购买3", "productBuyBtnClick": "" });
+     var type = best.producttype('<%= row["className"]%>')
+     productList.push({ "product<%= row["id"]%>": "[{\"propName\":\"" + best.type + "\",\"propValue\":\"" + type + "\"},{\"propName\":\"" + best.numbering + "\",\"propValue\":\"<%= row["GoodsNo"]%>\"}]", "productName": "<%= row["GoodsName"]%>", "productBuyBtnText": "购买3", "productBuyBtnClick": "" });
 <% }
     %>
 
